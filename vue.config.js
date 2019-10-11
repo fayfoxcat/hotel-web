@@ -1,0 +1,32 @@
+module.exports = {
+    //根路径
+    publicPath:'/',
+    //构建输出目录
+    outputDir:'dist',
+    //静态资源目录
+    assetsDir:'assets',
+    //是否开启eslint保存检测，有效值：true、false、error
+    lintOnSave:false,
+    devServer:{
+        open:true,
+        host:'10.35.11.18',
+        port:8888,
+        https:false,
+        hotOnly:false,
+        //配置跨域
+        proxy:{
+            '/api':{
+                target:'http/localhost:5000/api/',
+                //是否允许跨域：true
+                changOrigin:true,
+                pathRewrite:{
+                    //需要重写rewrite
+                    '^/api':''
+                }
+            }
+        },
+        before(app){
+            
+        }
+    },
+}; 
